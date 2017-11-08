@@ -1,0 +1,11 @@
+admin-widget:
+  version: 0.1
+  css:
+    theme:
+      assets/css/admin-widget.css : {}
+  js:
+    assets/js/admin-widget.js : {}
+  dependencies:
+    - core/drupalSettings
+    - core/jquery
+    - core/jquery.once

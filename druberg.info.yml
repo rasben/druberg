@@ -1,0 +1,5 @@
+name: Druberg
+type: module
+description: Gutenberg clone
+core: 8.x
+package: Druberg

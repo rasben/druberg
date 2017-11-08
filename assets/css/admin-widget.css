@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Serif");
+.drb {
+  width: 800px;
+  margin: 110px auto;
+  padding: 0 50px;
+  box-sizing: border-box;
+  font-family: 'Noto Serif', serif; }
+
+.drb__element {
+  position: relative;
+  padding: 20px;
+  min-height: 62px;
+  box-sizing: border-box; }
+  .drb__element.is-featured::before {
+    opacity: 0.4; }
+  .drb__element::after {
+    font-size: 14px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding-left: 10px;
+    margin: auto;
+    height: 40px;
+    width: 30px;
+    line-height: 40px;
+    right: -40px;
+    border-left: 1px solid #ccc; }
+  .drb__element::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    border: 1px solid #ccc;
+    transition: opacity 200ms ease-in; }
+  .drb__element:hover .drb__side-settings,
+  .drb__element:hover .drb__settings, .drb__element:hover::before {
+    display: block;
+    opacity: 1; }
+  .drb__element.is-align-left {
+    text-align: left; }
+  .drb__element.is-align-center {
+    text-align: center; }
+  .drb__element.is-align-right {
+    text-align: right; }
+  .drb__element.is-float-left, .drb__element.is-float-right {
+    float: left;
+    width: 50%;
+    z-index: 2; }
+  .drb__element.is-float-right {
+    float: right; }
+  .drb__element.is-heading::after {
+    content: 'HEAD'; }
+  .drb__element.is-heading.is-h1 .drb__preview {
+    font-size: 50px; }
+  .drb__element.is-heading.is-h2 .drb__preview {
+    font-size: 30px; }
+  .drb__element.is-heading.is-h3 .drb__preview {
+    font-size: 20px; }
+  .drb__element.is-paragraph::after {
+    content: 'PARA'; }
+  .drb__element.is-image {
+    clear: both;
+    position: relative; }
+    .drb__element.is-image.is-float-left, .drb__element.is-image.is-float-right {
+      clear: none; }
+    .drb__element.is-image::after {
+      content: 'IMG'; }
+    .drb__element.is-image > img {
+      width: 100%;
+      height: auto; }
+
+.drb__editor {
+  position: relative;
+  min-height: 1em;
+  z-index: 3;
+  font-size: inherit; }
+
+.drb__side-settings {
+  position: absolute;
+  opacity: 0;
+  display: none;
+  top: 0;
+  left: -29px;
+  width: 30px;
+  height: 60px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #fff;
+  text-align: center;
+  transition: opacity 200ms ease-in; }
+
+.drb__side-settings--right {
+  left: auto;
+  right: -29px; }
+
+.drb__side-setting {
+  display: block;
+  height: 20px;
+  line-height: 20px; }
+
+.drb__settings {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  margin-bottom: -10px;
+  font-size: 14px;
+  transition: opacity 200ms ease-in; }
+  .drb__settings:hover {
+    opacity: 1; }
+
+.drb__setting {
+  float: left;
+  margin-left: 20px;
+  margin-top: 10px;
+  box-shadow: 0 0 20px #999;
+  background-color: #fff; }
+
+.drb__checkboxes {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+  .drb__checkboxes > li {
+    display: block;
+    float: left; }
+    .drb__checkboxes > li > label {
+      display: inline-block;
+      color: #333;
+      padding: 0 10px;
+      height: 30px;
+      line-height: 30px; }
+    .drb__checkboxes > li > input {
+      position: absolute;
+      left: -9999px;
+      height: 0;
+      width: 0;
+      overflow: hidden; }
+    .drb__checkboxes > li > input:checked + label {
+      color: #fff;
+      background-color: #333; }
+    .drb__checkboxes > li > input:focus + label {
+      background-color: #444; }
+
+/*# sourceMappingURL=admin-widget.css.map */

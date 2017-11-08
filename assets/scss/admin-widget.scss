@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif');
+
+$transition-opacity: opacity 200ms ease-in;
+
+$gutter: 20px;
+$gutter--small: $gutter / 2;
+$gutter--tiny: $gutter--small / 4;
+
+$color-grey: #333;
+$color-grey--light: #444;
+$color-border: #ccc;
+$color-border--dark: #999;
+$color-bg--dark: $color-grey;
+$color-bg--semi-dark: $color-grey--light;
+$color-bg--light: #fff;
+$color-text--light: #fff;
+
+$box-shadow: 0 0 20px $color-border--dark;
+
+$border-style: 1px solid $color-border;
+
+$settings-font-size: 14px;
+$setting-height: 30px;
+
+$side-settings-font-size: 14px;
+$side-settings-width: 30px;
+$side-settings-height: 60px;
+$side-setting-height: 20px;
+
+$side-icon-height: 40px;
+
+$opacity--active: 1;
+$opacity--inactive: 0;
+$opacity--semi-active: 0.4;
+
+$heading-font-sizes: (
+  h1: 50px,
+  h2: 30px,
+  h3: 20px,
+);
+
+$z-index--hover: 2;
+$z-index--max: 3;
+
+.drb {
+  width: 800px;
+  margin: (($setting-height * 3) + $gutter) auto;
+  padding: 0 ($side-settings-width + $gutter);
+
+  box-sizing: border-box;
+  font-family: 'Noto Serif', serif;
+}
+
+.drb__element {
+  position: relative;
+  padding: $gutter;
+  min-height: $side-settings-height + 2px; // 2px because of the border.
+
+  box-sizing: border-box;
+
+  &.is-featured {
+    &::before {
+      opacity: $opacity--semi-active;
+    }
+  }
+
+  &::after {
+    font-size: $side-settings-font-size;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding-left: $gutter--small;
+    margin: auto;
+    height: $side-icon-height;
+    width: $side-settings-width;
+    line-height: $side-icon-height;
+    right: -($side-settings-width + $gutter--small);
+    border-left: $border-style;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: $opacity--inactive;
+    border: $border-style;
+    transition : $transition-opacity;
+  }
+
+  &:hover {
+    .drb__side-settings,
+    .drb__settings,
+    &::before {
+      display: block;
+      opacity: $opacity--active;
+    }
+  }
+
+  &.is-align-left {
+    text-align: left;
+  }
+
+  &.is-align-center {
+    text-align: center;
+  }
+
+  &.is-align-right {
+    text-align: right;
+  }
+
+  &.is-float-left,
+  &.is-float-right {
+    float: left;
+    width: 50%;
+    z-index: $z-index--hover;
+  }
+
+  &.is-float-right {
+    float: right;
+  }
+
+  &.is-heading {
+    &::after {
+      content: 'HEAD';
+    }
+
+    @each $heading, $headingSize in $heading-font-sizes {
+      &.is-#{$heading} {
+        .drb__preview {
+          font-size: $headingSize;
+        }
+      }
+    }
+  }
+
+  &.is-paragraph {
+    &::after {
+      content: 'PARA';
+    }
+  }
+
+  &.is-image {
+    clear: both;
+
+    position: relative;
+
+    &.is-float-left,
+    &.is-float-right {
+      clear: none;
+    }
+
+    &::after {
+      content: 'IMG';
+    }
+
+    > img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.drb__editor {
+  position: relative;
+  min-height: 1em;
+  z-index: $z-index--max;
+
+  font-size: inherit;
+}
+
+.drb__side-settings {
+  position: absolute;
+  opacity: $opacity--inactive;
+  display: none;
+  top: 0;
+  left: -(($side-settings-height / 2) - 1px); //1px because of the border.
+  width: $side-settings-width;
+  height: $side-settings-height;
+  border: $border-style;
+
+  font-size: $side-settings-font-size;
+  background-color: $color-bg--light;
+  text-align: center;
+
+  transition : $transition-opacity;
+}
+
+.drb__side-settings--right {
+  left: auto;
+  right: -(($side-settings-height / 2) - 1px); //1px because of the border.
+}
+
+.drb__side-setting {
+  display: block;
+  height: $side-setting-height;
+
+  line-height: $side-setting-height;
+}
+
+.drb__settings {
+  display: none;
+  opacity: $opacity--inactive;
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  margin-bottom: -$gutter--small;
+
+  font-size: $settings-font-size;
+  transition : $transition-opacity;
+
+  &:hover {
+    opacity: $opacity--active;
+  }
+}
+
+.drb__setting {
+  float: left;
+  margin-left: $gutter;
+  margin-top: $gutter--small;
+
+  box-shadow: $box-shadow;
+  background-color: $color-bg--light;
+}
+
+.drb__checkboxes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  > li {
+    display: block;
+    float: left;
+
+    > label {
+      display: inline-block;
+      color: $color-grey;
+      padding: 0 $gutter--small;
+      height: $setting-height;
+      line-height: $setting-height;
+    }
+
+    > input {
+      position: absolute;
+      left: -9999px;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+    }
+
+    > input:checked + label {
+      color: $color-text--light;
+      background-color: $color-bg--dark;
+    }
+
+    > input:focus + label {
+      background-color: $color-bg--semi-dark;
+    }
+  }
+}
