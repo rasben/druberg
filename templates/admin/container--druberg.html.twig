@@ -22,7 +22,7 @@
 {%
 set classes = [
 has_parent ? 'js-form-wrapper',
-  'drb-element',
+  'druberg-element',
 ]
 %}
 <pre>
@@ -31,25 +31,25 @@ has_parent ? 'js-form-wrapper',
 
 {% for child in children %}
   {% set value = '' %}
-  {% set sideSettings = [] %}
-  {% set settings = ['up', 'down', 'delete'] %}
+  {% set sideSettings = ['up', 'down', 'delete'] %}
+  {% set settings = [] %}
 
   <div {{ attributes.addClass(classes) }}>
-    <div class="drb__value-input js-drb-value-input">
+    <div class="druberg__value-input js-druberg-value-input">
       {{ value }}
     </div>
-    <div class="drb__preview js-drb-value">
+    <div class="druberg__preview js-druberg-value">
     </div>
-    <div class="drb__side-settings">
+    <div class="druberg__side-settings">
       {% for setting in sideSettings %}
-        <span class="drb__side-setting js-drb-setting is-{{ setting }}">
+        <span class="druberg__side-setting js-druberg-side-setting is-{{ setting }}">
           {{ setting }}
         </span>
       {% endfor %}
     </div>
-    <div class="drb__settings">
+    <div class="druberg__settings">
       {% for setting in settings %}
-        <div class="drb__setting">
+        <div class="druberg__setting">
           {{ setting }}
         </div>
       {% endfor %}

@@ -42,7 +42,7 @@ $heading-font-sizes: (
 $z-index--hover: 2;
 $z-index--max: 3;
 
-.drb {
+.druberg {
   width: 800px;
   margin: (($setting-height * 3) + $gutter) auto;
   padding: 0 ($side-settings-width + $gutter);
@@ -51,7 +51,7 @@ $z-index--max: 3;
   font-family: 'Noto Serif', serif;
 }
 
-.drb__element {
+.druberg__element {
   position: relative;
   padding: $gutter;
   min-height: $side-settings-height + 2px; // 2px because of the border.
@@ -87,12 +87,13 @@ $z-index--max: 3;
     bottom: 0;
     opacity: $opacity--inactive;
     border: $border-style;
-    transition : $transition-opacity;
+
+    transition: $transition-opacity;
   }
 
   &:hover {
-    .drb__side-settings,
-    .drb__settings,
+    .druberg__side-settings,
+    .druberg__settings,
     &::before {
       display: block;
       opacity: $opacity--active;
@@ -129,7 +130,7 @@ $z-index--max: 3;
 
     @each $heading, $headingSize in $heading-font-sizes {
       &.is-#{$heading} {
-        .drb__preview {
+        .druberg__preview {
           font-size: $headingSize;
         }
       }
@@ -163,7 +164,7 @@ $z-index--max: 3;
   }
 }
 
-.drb__editor {
+.druberg__editor {
   position: relative;
   min-height: 1em;
   z-index: $z-index--max;
@@ -171,7 +172,7 @@ $z-index--max: 3;
   font-size: inherit;
 }
 
-.drb__side-settings {
+.druberg__side-settings {
   position: absolute;
   opacity: $opacity--inactive;
   display: none;
@@ -188,19 +189,19 @@ $z-index--max: 3;
   transition : $transition-opacity;
 }
 
-.drb__side-settings--right {
+.druberg__side-settings--right {
   left: auto;
   right: -(($side-settings-height / 2) - 1px); //1px because of the border.
 }
 
-.drb__side-setting {
+.druberg__side-setting {
   display: block;
   height: $side-setting-height;
 
   line-height: $side-setting-height;
 }
 
-.drb__settings {
+.druberg__settings {
   display: none;
   opacity: $opacity--inactive;
   position: absolute;
@@ -216,7 +217,7 @@ $z-index--max: 3;
   }
 }
 
-.drb__setting {
+.druberg__setting {
   float: left;
   margin-left: $gutter;
   margin-top: $gutter--small;
@@ -225,7 +226,7 @@ $z-index--max: 3;
   background-color: $color-bg--light;
 }
 
-.drb__checkboxes {
+.druberg__checkboxes {
   list-style: none;
   padding: 0;
   margin: 0;
