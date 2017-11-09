@@ -24,31 +24,39 @@ class DrubergWidget extends WidgetBase {
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $_float = [
       '#type' => 'radios',
-      '#module' => 'druberg',
       '#options' => [
         'left' => t('< 50%'),
         'none' => t('100%'),
         'right' => t('50% >'),
       ],
       '#default_value' => 'left',
+      '#attributes' => [
+        'data-twig-suggestion' => 'druberg'
+      ]
     ];
 
     $_text_alignment = [
       '#type' => 'radios',
-      '#module' => 'druberg',
       '#options' => [
         'left' => t('Left'),
         'center' => t('Center'),
         'right' => t('Right'),
       ],
       '#default_value' => 'left',
+      '#attributes' => [
+        'data-twig-suggestion' => 'druberg'
+      ]
+
     ];
 
     $_text_value = [
       '#type' => 'textarea',
       '#module' => 'druberg',
-      '#attributes' => ['class' => ['js-druberg-element-value']],
       '#default_value' => '',
+      '#attributes' => [
+        'data-twig-suggestion' => 'druberg',
+        'class' => ['js-druberg-element-value']
+      ]
     ];
 
     $element += [
@@ -58,18 +66,23 @@ class DrubergWidget extends WidgetBase {
         [static::class, 'validate'],
       ],
       '#module' => 'druberg',
-      '#attributes' => ['class' => ['js-druberg-master']],
+      '#attributes' => [
+        'data-twig-suggestion' => 'druberg',
+        'class' => ['js-druberg-master']
+      ]
     ];
 
     $element['element-type'] = [
       '#type' => 'select',
       '#title' => t('Element type'),
-      '#module' => 'druberg',
       '#options' => [
         'heading' => t('Heading'),
         'paragraph' => t('Paragraph'),
       ],
       '#default_value' => 'heading',
+      '#attributes' => [
+        'data-twig-suggestion' => 'druberg'
+      ]
     ];
 
     $element['heading']['setting']['heading-setting_type'] = [
@@ -83,6 +96,9 @@ class DrubergWidget extends WidgetBase {
         'h4' => t('Heading 4 (H4)'),
       ],
       '#default_value' => 'h1',
+      '#attributes' => [
+        'data-twig-suggestion' => 'druberg'
+      ]
     ];
 
     $element['heading']['heading_value'] = $_text_value;
