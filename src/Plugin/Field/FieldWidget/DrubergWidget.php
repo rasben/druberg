@@ -24,6 +24,8 @@ class DrubergWidget extends WidgetBase {
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $_float = [
       '#type' => 'radios',
+      '#theme' => 'radios-druberg',
+
       '#options' => [
         'left' => t('< 50%'),
         'none' => t('100%'),
@@ -37,6 +39,8 @@ class DrubergWidget extends WidgetBase {
 
     $_text_alignment = [
       '#type' => 'radios',
+      '#theme' => 'radios-druberg',
+
       '#options' => [
         'left' => t('Left'),
         'center' => t('Center'),
@@ -66,6 +70,7 @@ class DrubergWidget extends WidgetBase {
         [static::class, 'validate'],
       ],
       '#module' => 'druberg',
+      '#theme' => 'container-druberg',
       '#attributes' => [
         'data-twig-suggestion' => 'druberg',
         'class' => ['js-druberg-master']
@@ -85,8 +90,9 @@ class DrubergWidget extends WidgetBase {
       ]
     ];
 
-    $element['heading']['setting']['heading-setting_type'] = [
+    $element['heading']['settings']['heading-setting_type'] = [
       '#type' => 'radios',
+      '#theme' => 'radios-druberg',
       '#title' => t('Heading setting - type'),
       '#module' => 'druberg',
       '#options' => [
@@ -104,11 +110,11 @@ class DrubergWidget extends WidgetBase {
     $element['heading']['heading_value'] = $_text_value;
     $element['paragraph']['paragraph_value'] = $_text_value;
 
-    $element['heading']['setting']['heading-setting_alignment'] = $_text_alignment;
-    $element['paragraph']['setting']['paragraph-setting_alignment'] = $_text_alignment;
+    $element['heading']['settings']['heading-setting_alignment'] = $_text_alignment;
+    $element['paragraph']['settings']['paragraph-setting_alignment'] = $_text_alignment;
 
-    $element['heading']['setting']['heading-setting_float'] = $_float;
-    $element['paragraph']['setting']['paragraph-setting_float'] = $_float;
+    $element['heading']['settings']['heading-setting_float'] = $_float;
+    $element['paragraph']['settings']['paragraph-setting_float'] = $_float;
 
     $element['#attached']['library'][] = 'druberg/admin-widget';
 

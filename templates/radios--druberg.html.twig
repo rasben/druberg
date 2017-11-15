@@ -1,0 +1,15 @@
+{% set elements = _context|first %}
+
+<pre>
+  {{ dump(elements) }}
+</pre>
+<hr>
+
+<ul class="druberg__checkboxes">
+  <li class="druberg__checkbox">
+    {% for optionKey, option in elements['#options'] %}
+      <input type="radio" id="float-left" name="float"/>
+      <label for="float-left">< 50%</label>
+    {% endfor %}
+  </li>
+</ul>

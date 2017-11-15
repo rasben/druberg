@@ -1,5 +1,6 @@
 <?php
 
+
 /**
  * @file
  * Hooks and functionality for druberg
@@ -7,15 +8,33 @@
 
 function druberg_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
   //ksm($form);
+
 }
 
+function druberg_preprocess_table(&$variables) {
+}
+
+/*
+function druberg_preprocess_container(&$variables) {
+  if (
+    isset($variables['element']['#module']) &&
+    $variables['element']['#module'] == 'druberg'
+  ) {
+    $variables['directory'] = drupal_get_path('module', 'druberg');
+    $variables['theme_hook_suggestions'][] = 'container__druberg';
+    ksm($variables);
+  }
+}
+*/
+
 function druberg_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+/*
   if (isset($variables['element']['#attributes']['data-twig-suggestion'])) {
     $element = $variables['element'];
 
     $suggestions[] = $hook . '__' . $element['#attributes']['data-twig-suggestion'];
   }
-
+*/
 
   // @todo - can we be sure that its always the first array in ['#submit']?
   /*
@@ -39,5 +58,40 @@ function druberg_theme() {
       'variables' => array('json' => NULL),
       'template' => 'druberg',
     ),
+    'container-druberg' => array(
+      'variables' => array(),
+      'template' => 'container--druberg',
+    ),
+    'radios-druberg' => array(
+      'variables' => array(),
+      'template' => 'radios--druberg',
+    ),
+    'radio-druberg' => array(
+      'variables' => array(),
+      'template' => 'radio--druberg',
+    ),
   );
 }
+
+
+/*
+function druberg_preprocess_container(&$variables) {
+  if (isset($variables['attributes']['data-twig-suggestion']) &&
+    $variables['attributes']['data-twig-suggestion'] === 'druberg') {
+      $variables['theme_hook_original'] = 'container__druberg';
+
+    ksm($variables);
+
+  }
+}
+
+*/
+
+/**
+ * Implements hook_theme_registry_alter
+ */
+function druberg_theme_registry_alter(&$theme_registry) {
+
+  //$theme_registry['page']['path'] = drupal_get_path('module', 'my_module') . '/templates';
+}
+

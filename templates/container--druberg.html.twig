@@ -1,0 +1,46 @@
+
+
+
+
+{% set element = _context|first %}
+
+<pre>
+{{ dump() }}
+
+</pre>
+
+{% set attributes = element['#attributes'] %}
+
+
+
+{% set elementTypes = ['heading', 'paragraph'] %}
+
+{% for type in elementTypes %}
+  {% set value = element[type ~ '_value'] %}
+  {% set sideSettings = ['up', 'down', 'delete'] %}
+  {% set settings = element[type]['settings'] %}
+
+  <div class="druberg__element is-{{ type }}">
+    <div class="druberg__value-input js-druberg-value-input">
+      {{ value|render }}
+    </div>
+    <div class="druberg__preview js-druberg-value">
+    </div>
+    <div class="druberg__side-settings">
+      {% for settingKey, setting in sideSettings %}
+          <span class="druberg__side-setting js-druberg-side-setting is-{{ setting }}">
+            {{ setting }}
+          </span>
+      {% endfor %}
+    </div>
+    <div class="druberg__settings">
+      {% for settingKey, setting in settings %}
+        {% if settingKey starts with type ~ '-setting_' %}
+          <div class="druberg__setting">
+            {{ setting|render }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+{% endfor %}
